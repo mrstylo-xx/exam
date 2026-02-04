@@ -5,8 +5,8 @@ const withPWA = withPWAInit({
   cacheOnFrontEndNav: true,
   aggressiveFrontEndNavCaching: true,
   reloadOnOnline: true,
-  swcMinify: true,
-  disable: false,
+  // disable PWA in development to avoid caching issues while developing
+  disable: process.env.NODE_ENV === "development",
   workboxOptions: {
     disableDevLogs: true,
   },
@@ -14,7 +14,7 @@ const withPWA = withPWAInit({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // output: 'export', // <--- এই লাইনটি ডিলিট করা হয়েছে
+  swcMinify: true,
   images: {
     unoptimized: true,
   },
