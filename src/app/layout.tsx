@@ -21,10 +21,9 @@ export const metadata: Metadata = {
   description: "Premium Mock Test Platform for Students",
   manifest: "/manifest.json",
   themeColor: "#4f46e5",
-  // 'viewport' এখানে থাকবে না
 };
 
-// ৩. নতুন ভিউপোর্ট কনস্ট্যান্ট (এক্সপোর্ট করুন)
+// ৩. ভিউপোর্ট কনস্ট্যান্ট
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
@@ -38,8 +37,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${poppins.variable} ${bengali.variable}`}>
-      <body className="antialiased" style={{ fontFamily: "'var(--font-poppins)', sans-serif" }}>
+    <html lang="en" className={`${poppins.variable} ${bengali.variable} scroll-smooth`}>
+      <head>
+        <meta charSet="utf-8" />
+      </head>
+      <body className="font-poppins antialiased bg-white text-gray-900">
         {children}
       </body>
     </html>
