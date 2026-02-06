@@ -2,19 +2,13 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
       fontFamily: {
         poppins: "var(--font-poppins, 'Poppins', sans-serif)",
         bengali: "var(--font-bengali, 'Noto Serif Bengali', serif)",
-      },
-      colors: {
-        primary: "#4f46e5",
-        secondary: "#7c3aed",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
