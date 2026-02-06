@@ -4,18 +4,14 @@ const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}", // এই লাইনটি আপনার জন্য সবচেয়ে জরুরি
   ],
   theme: {
     extend: {
-      fontFamily: {
-        // আমাদের কাস্টম ফন্ট ভেরিয়েবল কানেক্ট করা হলো
-        sans: ['var(--font-poppins)', 'sans-serif'],
-        serif: ['var(--font-bengali)', 'serif'],
-      },
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
     },
   },
