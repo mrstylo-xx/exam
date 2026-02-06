@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Noto_Serif_Bengali, Poppins } from "next/font/google";
 import "./globals.css";
 
-// ১. ফন্ট কনফিগারেশন (ইংরেজি এবং বাংলা)
+// ১. ফন্ট কনফিগারেশন
 const poppins = Poppins({ 
   subsets: ["latin"], 
   weight: ["400", "500", "600", "700"],
@@ -15,13 +15,21 @@ const bengali = Noto_Serif_Bengali({
   variable: '--font-bengali'
 });
 
-// ২. মেটাডাটা (SEO এর জন্য)
+// ২. মেটাডাটা
 export const metadata: Metadata = {
   title: "Mr. Stylo Academy",
   description: "Premium Mock Test Platform for Students",
-  manifest: "/manifest.json", // PWA এর জন্য
+  manifest: "/manifest.json",
   themeColor: "#4f46e5",
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0",
+  // 'viewport' এখানে থাকবে না
+};
+
+// ৩. নতুন ভিউপোর্ট কনস্ট্যান্ট (এক্সপোর্ট করুন)
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 };
 
 export default function RootLayout({
@@ -30,8 +38,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${poppins.variable} ${bengali.variable} font-sans antialiased`}>
+    <html lang="en" className={`${poppins.variable} ${bengali.variable}`}>
+      <body className="antialiased" style={{ fontFamily: "'var(--font-poppins)', sans-serif" }}>
         {children}
       </body>
     </html>
