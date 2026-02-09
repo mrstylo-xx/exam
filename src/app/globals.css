@@ -2,7 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Reset and Base Styles */
+/* ============================================
+   1. FONT FAMILY SETUP
+   ============================================ */
+html {
+  --font-poppins: var(--font-poppins, 'Poppins', sans-serif);
+  --font-bengali: var(--font-bengali, 'Noto Serif Bengali', serif);
+}
+
+body {
+  font-family: var(--font-poppins);
+}
+
+/* ============================================
+   2. ROOT & CSS VARIABLES
+   ============================================ */
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 249, 250, 251;
@@ -10,6 +24,9 @@
   color-scheme: light;
 }
 
+/* ============================================
+   3. RESET STYLES
+   ============================================ */
 * {
   box-sizing: border-box;
   padding: 0;
@@ -18,14 +35,19 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-end-rgb));
+  overflow-x: hidden;
 }
 
-/* কাস্টম স্ক্রলবার */
+/* ============================================
+   4. CUSTOM SCROLLBAR
+   ============================================ */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -44,7 +66,9 @@ body {
   background: #94a3b8;
 }
 
-/* MathJax ফন্ট সাইজ */
+/* ============================================
+   5. MATH & KATEX STYLES
+   ============================================ */
 .math-content {
   font-size: 1.1em;
   line-height: 1.6;
@@ -54,7 +78,9 @@ body {
   font-size: 1.1em !important;
 }
 
-/* Glassmorphism ইফেক্ট */
+/* ============================================
+   6. GLASSMORPHISM EFFECT
+   ============================================ */
 .glass {
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
@@ -62,7 +88,9 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* অ্যানিমেশন */
+/* ============================================
+   7. ANIMATIONS
+   ============================================ */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -74,11 +102,28 @@ body {
   }
 }
 
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .animate-fade-in {
   animation: fadeIn 0.3s ease-out forwards;
 }
 
-/* Utility Classes */
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+/* ============================================
+   8. UTILITY COMPONENT CLASSES
+   ============================================ */
 @layer components {
   .btn-primary {
     @apply px-4 py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors;
@@ -94,5 +139,67 @@ body {
 
   .container-custom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ============================================
+   9. RESPONSIVE UTILITIES
+   ============================================ */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .safe-area {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+}
+
+/* ============================================
+   10. FOCUS & ACCESSIBILITY
+   ============================================ */
+:focus-visible {
+  outline: 2px solid #4f46e5;
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid #4f46e5;
+  outline-offset: 2px;
+}
+
+/* ============================================
+   11. FORM STYLES
+   ============================================ */
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 0.7;
+}
+
+/* ============================================
+   12. PRINT STYLES
+   ============================================ */
+@media print {
+  body {
+    background: white;
   }
 }
