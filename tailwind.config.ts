@@ -7,8 +7,9 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        poppins: "var(--font-poppins, 'Poppins', sans-serif)",
-        bengali: "var(--font-bengali, 'Noto Serif Bengali', serif)",
+        poppins: ["var(--font-poppins)", "sans-serif"],
+        bengali: ["var(--font-bengali)", "serif"],
+        sans: ["var(--font-poppins)", "sans-serif"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
